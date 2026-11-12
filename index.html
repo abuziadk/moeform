@@ -24,24 +24,6 @@
     color-scheme: light;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0e120d;
-      --bg-2: #12160f;
-      --surface: #171d17;
-      --surface-2: #1f251e;
-      --text: #e9ece6;
-      --text-muted: #97a396;
-      --border: #2b332a;
-      --step-a: #86aad0;
-      --step-a-soft: #1c2733;
-      --step-b: #45bd92;
-      --step-b-soft: #16281f;
-      --shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 20px 44px -20px rgba(0, 0, 0, 0.6);
-      color-scheme: dark;
-    }
-  }
-
   :root[data-theme="dark"] {
     --bg: #0e120d;
     --bg-2: #12160f;
@@ -148,6 +130,7 @@
 
   .panel-body { flex: 1; display: flex; flex-direction: column; min-height: 0; }
 
+  /* خطوة ٢: نموذج مضمّن مباشرة */
   .panel iframe {
     flex: 1;
     width: 100%;
@@ -188,6 +171,38 @@
 
   a:focus-visible { outline: 2px solid var(--step-b); outline-offset: 2px; }
 
+  /* خطوة ١: بطاقة فتح — النموذج يتطلب تسجيل دخول ورفع ملف، وجوجل لا تسمح بتضمين هذا النوع */
+  .start-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 40px 30px 46px;
+    min-height: 340px;
+  }
+
+  .icon-ring {
+    width: 68px; height: 68px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .panel.a .icon-ring { background: var(--step-a-soft); color: var(--step-a); }
+
+  .start-card p { margin: 0; color: var(--text-muted); font-size: 15px; max-width: 36ch; }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: 9px;
+    text-decoration: none; font-weight: 700; font-size: 16px;
+    padding: 14px 26px; border-radius: 12px; color: #fff; margin-top: 6px;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .panel.a .cta { background: var(--step-a); }
+  .cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .cta:focus-visible { outline: 2px solid var(--step-b); outline-offset: 2px; }
+  .cta svg { flex: none; }
+
   .connector {
     display: flex; align-items: center; justify-content: center;
     flex-direction: column; gap: 6px; color: var(--text-muted);
@@ -203,7 +218,7 @@
   }
   footer.note svg { flex: none; margin-top: 2px; color: var(--step-b); }
 
-  .finish-row { padding: 14px 22px 20px; }
+  .finish-row { padding: 0 30px 34px; width: 100%; }
 
   .finish-btn {
     width: 100%;
@@ -333,7 +348,7 @@
       </div>
       <div class="titles">
         <h1>خطة الإخلاء - المرحلة الأولى</h1>
-        <p>عبّي نموذج خطة الإخلاء للمرحلة الأولى (الفصل الدراسي الأول ١٤٤٨هـ) من اليمين واضغط إرسال، ثم سجّل مدرستك في نموذج التسجيل على اليسار — بيانات التسجيل تتجمع تلقائيًا في جدول تقدر ترجع له بأي وقت.</p>
+        <p>ابدأ تعبئة نموذج خطة الإخلاء للمرحلة الأولى (الفصل الدراسي الأول ١٤٤٨هـ) من اليمين، ثم سجّل مدرستك في نموذج التسجيل على اليسار — بيانات التسجيل تتجمع تلقائيًا في جدول تقدر ترجع له بأي وقت.</p>
       </div>
     </header>
 
@@ -346,17 +361,15 @@
             <h2>خطة الإخلاء - المرحلة الأولى</h2>
           </div>
         </div>
-        <div class="panel-body">
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdXPg1ix4WW1HzE6mHWGQETyA-Q7GbmdSJgcMGXLD_KR3STfQ/viewform?embedded=true"
-            title="نموذج خطة الإخلاء - المرحلة الأولى"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-        <div class="fallback">
-          <span>إذا ما ظهر النموذج هنا</span>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdXPg1ix4WW1HzE6mHWGQETyA-Q7GbmdSJgcMGXLD_KR3STfQ/viewform" target="_blank" rel="noopener">افتحه في نافذة جديدة</a>
+        <div class="start-card">
+          <div class="icon-ring">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5M9 12h6M9 16h6M9 8h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <p>نموذج خطة الإخلاء للمرحلة الأولى خاص بإدارة التعليم للفصل الدراسي الأول ١٤٤٨هـ، ويتطلب تسجيل الدخول بحساب Google وإرفاق ملف توثيق (PDF أو صورة)، لذا يفتح في نافذة جديدة.</p>
+          <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdXPg1ix4WW1HzE6mHWGQETyA-Q7GbmdSJgcMGXLD_KR3STfQ/viewform" target="_blank" rel="noopener">
+            البدء في تعبئة نموذج الإخلاء
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
         <div class="finish-row">
           <button type="button" class="finish-btn" id="finishBtn">
