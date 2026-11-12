@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>استبانة الجاهزية والاستعداد</title>
+<title>خطة الإخلاء - المرحلة الأولى</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@400;500;700&display=swap">
@@ -80,11 +80,7 @@
     gap: 30px;
   }
 
-  header.top {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+  header.top { display: flex; align-items: center; gap: 16px; }
 
   .mark {
     width: 52px;
@@ -99,15 +95,8 @@
   }
 
   header.top .titles { display: flex; flex-direction: column; gap: 6px; }
-
   header.top h1 { font-size: clamp(26px, 3.2vw, 38px); font-weight: 700; }
-
-  header.top p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 16px;
-    max-width: 68ch;
-  }
+  header.top p { margin: 0; color: var(--text-muted); font-size: 16px; max-width: 68ch; }
 
   .flow {
     display: grid;
@@ -141,38 +130,19 @@
     .panel { min-height: 620px; }
   }
 
-  .panel-head {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 22px 24px;
-    border-bottom: 1px solid var(--border);
-  }
+  .panel-head { display: flex; align-items: center; gap: 14px; padding: 22px 24px; border-bottom: 1px solid var(--border); }
 
   .badge {
-    width: 40px;
-    height: 40px;
-    flex: none;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-    font-weight: 700;
-    font-size: 17px;
+    width: 40px; height: 40px; flex: none; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "IBM Plex Sans Arabic", sans-serif; font-weight: 700; font-size: 17px;
   }
   .panel.a .badge { background: var(--step-a-soft); color: var(--step-a); }
   .panel.b .badge { background: var(--step-b-soft); color: var(--step-b); }
 
   .panel-head .titles { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
   .panel-head h2 { font-size: 20px; font-weight: 700; }
-
-  .panel-head .eyebrow {
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-  }
+  .panel-head .eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); }
   .panel.a .eyebrow { color: var(--step-a); }
   .panel.b .eyebrow { color: var(--step-b); }
 
@@ -185,9 +155,7 @@
     min-height: 680px;
     background: var(--surface-2);
   }
-  @media (max-width: 900px) {
-    .panel iframe { min-height: 540px; }
-  }
+  @media (max-width: 900px) { .panel iframe { min-height: 540px; } }
 
   .fallback {
     display: flex;
@@ -221,28 +189,140 @@
   a:focus-visible { outline: 2px solid var(--step-b); outline-offset: 2px; }
 
   .connector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 6px;
-    color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 6px; color: var(--text-muted);
   }
   .connector .line { width: 2px; flex: 1; background: var(--border); }
   .connector svg { flex: none; opacity: 0.8; }
 
   footer.note {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 16px 20px;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    color: var(--text-muted);
-    font-size: 13.5px;
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 16px 20px; background: var(--surface-2);
+    border: 1px solid var(--border); border-radius: 14px;
+    color: var(--text-muted); font-size: 13.5px;
   }
   footer.note svg { flex: none; margin-top: 2px; color: var(--step-b); }
+
+  .finish-row { padding: 14px 22px 20px; }
+
+  .finish-btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1.5px dashed var(--step-a);
+    background: transparent;
+    color: var(--step-a);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .finish-btn:hover { background: var(--step-a-soft); }
+  .finish-btn:focus-visible { outline: 2px solid var(--step-b); outline-offset: 2px; }
+  .finish-btn svg { flex: none; }
+
+  body.no-scroll { overflow: hidden; }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 11, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 50;
+  }
+  .modal-backdrop[hidden] { display: none; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    max-width: 420px;
+    width: 100%;
+    padding: 34px 28px 28px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    animation: modal-in 0.18s ease;
+  }
+  @media (prefers-reduced-motion: reduce) { .modal { animation: none; } }
+  @keyframes modal-in {
+    from { opacity: 0; transform: translateY(6px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    inset-inline-end: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+  }
+  .modal-close:hover { background: var(--border); }
+
+  .modal-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--step-b-soft);
+    color: var(--step-b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal h2 { font-size: 20px; }
+  .modal p { margin: 0; color: var(--text-muted); font-size: 14.5px; line-height: 1.7; }
+
+  .modal-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 6px; }
+
+  .modal-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--step-b);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 20px;
+    border-radius: 11px;
+    font-size: 15px;
+    transition: filter 0.15s ease;
+  }
+  .modal-cta:hover { filter: brightness(1.08); }
+
+  .modal-secondary {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 13.5px;
+    cursor: pointer;
+    padding: 6px;
+    text-decoration: underline;
+  }
 </style>
 </head>
 <body>
@@ -252,8 +332,8 @@
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 13.5l2 2 4-4.5" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="titles">
-        <h1>استبانة الجاهزية والاستعداد</h1>
-        <p>بعد تعبئة الاستبانة وإرسالها يرجى الإنتقال الى الخطوة الثانية وتسجيل إسم المدرسة والرقم الوزاري في نموذج تسجيل إرسال الاستبانة  </p>
+        <h1>خطة الإخلاء - المرحلة الأولى</h1>
+        <p>عبّي نموذج خطة الإخلاء للمرحلة الأولى (الفصل الدراسي الأول ١٤٤٨هـ) من اليمين واضغط إرسال، ثم سجّل مدرستك في نموذج التسجيل على اليسار — بيانات التسجيل تتجمع تلقائيًا في جدول تقدر ترجع له بأي وقت.</p>
       </div>
     </header>
 
@@ -263,20 +343,26 @@
           <span class="badge">١</span>
           <div class="titles">
             <span class="eyebrow">الخطوة الأولى</span>
-            <h2>استبانة الجاهزية والاستعداد</h2>
+            <h2>خطة الإخلاء - المرحلة الأولى</h2>
           </div>
         </div>
         <div class="panel-body">
           <iframe
-            src="https://customerexp.moe.gov.sa/s/006C42B8628549EBA43EADA9BC54D1FB"
-            title="استبانة قياس رضا مدراء المدارس عن الجاهزية والاستعداد"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdXPg1ix4WW1HzE6mHWGQETyA-Q7GbmdSJgcMGXLD_KR3STfQ/viewform?embedded=true"
+            title="نموذج خطة الإخلاء - المرحلة الأولى"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
         <div class="fallback">
-          <span>إذا ما ظهرت الاستبانة هنا</span>
-          <a href="https://customerexp.moe.gov.sa/s/006C42B8628549EBA43EADA9BC54D1FB" target="_blank" rel="noopener">افتحها في نافذة جديدة</a>
+          <span>إذا ما ظهر النموذج هنا</span>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdXPg1ix4WW1HzE6mHWGQETyA-Q7GbmdSJgcMGXLD_KR3STfQ/viewform" target="_blank" rel="noopener">افتحه في نافذة جديدة</a>
+        </div>
+        <div class="finish-row">
+          <button type="button" class="finish-btn" id="finishBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            انتهيت من تعبئة النموذج وأرسلته
+          </button>
         </div>
       </section>
 
@@ -297,7 +383,7 @@
         <div class="panel-body">
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLScAgITJ85q_Bu69i98fUzf0CGelkQ-oqNs0d0xfURdnuxXRzA/viewform?embedded=true"
-            title="نموذج تسجيل إرسال الاستبانة"
+            title="نموذج تسجيل إرسال النموذج"
             loading="lazy"
           ></iframe>
         </div>
@@ -310,8 +396,64 @@
 
     <footer class="note">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span></span>
+      <span>نموذج خطة الإخلاء (الخطوة الأولى) مستقل عن نموذج التسجيل، وردود التسجيل تُحفظ في جدول بيانات خاص بصاحب هذه الصفحة فقط، لمتابعة المدارس التي أكملت الإرسال.</span>
     </footer>
   </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+      <button type="button" class="modal-close" id="modalClose" aria-label="إغلاق">×</button>
+      <div class="modal-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 id="modalTitle">شكرًا لتعبئة النموذج</h2>
+      <p id="modalDesc">نقدّر وقتك ومشاركتك. بقيت خطوة أخيرة: افتح نموذج التسجيل وأدخل اسم مدرستك والرقم الوزاري ثم اضغط إرسال، عشان نتأكد من توثيق ردكم.</p>
+      <div class="modal-actions">
+        <a class="modal-cta" id="modalCta" href="https://docs.google.com/forms/d/e/1FAIpQLScAgITJ85q_Bu69i98fUzf0CGelkQ-oqNs0d0xfURdnuxXRzA/viewform" target="_blank" rel="noopener">
+          افتح نموذج التسجيل
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button type="button" class="modal-secondary" id="modalDismiss">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var finishBtn = document.getElementById('finishBtn');
+      var backdrop = document.getElementById('modalBackdrop');
+      var closeBtn = document.getElementById('modalClose');
+      var dismissBtn = document.getElementById('modalDismiss');
+      var ctaLink = document.getElementById('modalCta');
+      var lastFocused = null;
+
+      function openModal() {
+        lastFocused = document.activeElement;
+        backdrop.hidden = false;
+        document.body.classList.add('no-scroll');
+        closeBtn.focus();
+        document.addEventListener('keydown', onKeydown);
+      }
+      function closeModal() {
+        backdrop.hidden = true;
+        document.body.classList.remove('no-scroll');
+        document.removeEventListener('keydown', onKeydown);
+        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+      }
+      function onKeydown(e) {
+        if (e.key === 'Escape') closeModal();
+      }
+
+      if (finishBtn) finishBtn.addEventListener('click', openModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
+      if (backdrop) backdrop.addEventListener('click', function (e) {
+        if (e.target === backdrop) closeModal();
+      });
+      if (ctaLink) ctaLink.addEventListener('click', function () {
+        setTimeout(closeModal, 150);
+      });
+    })();
+  </script>
 </body>
 </html>
